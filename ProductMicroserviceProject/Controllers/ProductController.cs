@@ -48,7 +48,7 @@ namespace ProductMicroserviceProject.Controllers
 
         // POST api/<ProductController>
         [HttpPost]
-        public IActionResult Post([FromBody] Product product)
+        public IActionResult Post( Product product)
         {
             if (product != null)
             {
@@ -62,10 +62,10 @@ namespace ProductMicroserviceProject.Controllers
         }
 
         // PUT api/<ProductController>/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Product product)
+        [HttpPut]
+        public IActionResult Put( Product product)
         {
-            if(id==product.id)
+            if(product != null)
             {
                 productRepository.UpdateProduct(product);
                 return Ok(product);
@@ -77,10 +77,10 @@ namespace ProductMicroserviceProject.Controllers
         }
 
         // DELETE api/<ProductController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{ProductId}")]
+        public void Delete(int productId)
         {
-            productRepository.DeleteProduct(id);
+            productRepository.DeleteProduct(productId);
         }
     }
 }
